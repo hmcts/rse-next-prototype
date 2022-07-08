@@ -5,26 +5,26 @@ import { getSession } from '../lib/session/memory';
 import { useEffect, useState } from 'react';
 
 const Page1: NextPage = () => {
-  const [isOpen, setIsOpen] = useState('');
+  const [question2ClassName, setQuestion2ClassName] = useState('');
   const onClickYes = () => {
-    setIsOpen('');
+    setQuestion2ClassName('');
   };
   const onClickNo = () => {
-    setIsOpen('hidden');
+    setQuestion2ClassName('hidden');
   };
   useEffect(() => {
-    setIsOpen('hidden');
+    setQuestion2ClassName('hidden');
   }, []);
 
   return <>
     <H1>HMCTS Next.js Prototype</H1>
-    <form action={'/page1'} method={'POST'}>
+    <form action={'/page2'} method={'POST'}>
       <Fieldset mb={6}>
         <Fieldset.Legend size="M">Do you like JavaScript</Fieldset.Legend>
         <Radio onClick={onClickYes} inline name="group1">Yes</Radio>
         <Radio onClick={onClickNo} inline name="group1">No</Radio>
       </Fieldset>
-      <div className={isOpen}>
+      <div className={question2ClassName}>
         <Fieldset mb={6}>
           <Fieldset.Legend size="M">Do you like TypeScript more?</Fieldset.Legend>
           <Checkbox>Of course!</Checkbox>
