@@ -1,19 +1,18 @@
-import type { InferGetServerSidePropsType, NextPage } from 'next';
+import type { NextPage } from 'next';
 import { GetServerSidePropsContext } from 'next';
 import { Button, Checkbox, Fieldset, H1, Paragraph, Radio } from 'govuk-react';
 import { getSession } from '../lib/session/memory';
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const Page1: NextPage = ({ user }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+const Page1: NextPage = () => {
   const [isOpen, setIsOpen] = useState('');
   const onClickYes = () => {
     setIsOpen('');
-  }
+  };
   const onClickNo = () => {
     setIsOpen('hidden');
-  }
+  };
   useEffect(() => {
-    console.log("loaded");
     setIsOpen('hidden');
   }, []);
 
@@ -38,7 +37,7 @@ const Page1: NextPage = ({ user }: InferGetServerSidePropsType<typeof getServerS
       [Save and sign out](/logout)
     </Paragraph>
   </>;
-}
+};
 
 export const getServerSideProps = async function ({ req, res }: GetServerSidePropsContext) {
   const { user } = await getSession(req, res);
